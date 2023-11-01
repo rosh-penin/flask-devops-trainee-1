@@ -38,5 +38,7 @@ def update_key(key):
     if not db.exists(key):
         return jsonify({'error': 'Key not found'}), 404
     data = request.get_data(as_text=True)
+    if not data:
+        return jsonify({'error': 'Invalid data'}), 400
     db.set(key, data)
     return jsonify(json.loads(data)), 200
