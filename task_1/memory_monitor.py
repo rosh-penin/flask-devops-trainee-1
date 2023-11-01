@@ -12,15 +12,6 @@ DEFAULT_MEMORY_ALARM_THRESHOLD = 90.0
 CHECKING_INTERVAL = 300  # in seconds
 TOLERATED_AMOUNT_OF_ERRORS = 10
 
-parser = argparse.ArgumentParser(description=(
-    'If memory consumption exceeds target threshold - send alarm to API server'
-))
-parser.add_argument('address', nargs='?', default=None,
-                    help='API server address')
-parser.add_argument('mem_target', nargs='?',
-                    default=DEFAULT_MEMORY_ALARM_THRESHOLD, type=float,
-                    help='Memory target threshold')
-
 
 class BadResponseException(Exception):
     """For bad (non-200 status code) response from server."""
@@ -79,5 +70,14 @@ if __name__ == '__main__':
         encoding=LOGFILE_ENCODING,
         level=logging.ERROR
     )
+    parser = argparse.ArgumentParser(
+        description=('If memory consumption exceeds target threshold - send '
+                     'alarm to API server')
+    )
+    parser.add_argument('address', nargs='?', default=None,
+                        help='API server address')
+    parser.add_argument('mem_target', nargs='?',
+                        default=DEFAULT_MEMORY_ALARM_THRESHOLD, type=float,
+                        help='Memory target threshold')
     address, target_memory = get_args()
     main(address, target_memory)
