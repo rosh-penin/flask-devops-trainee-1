@@ -1,9 +1,9 @@
 import argparse
 import logging
-import psutil
 import time
 from datetime import datetime
 
+import psutil
 import requests
 
 LOGFILE_NAME = 'memory_script_logfile.log'
