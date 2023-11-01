@@ -8,7 +8,7 @@ import requests
 
 LOGFILE_NAME = 'memory_script_logfile.log'
 LOGFILE_ENCODING = 'utf-8'
-DEFAULT_MEMORY_ALARM_THRESHOLD = 90.0
+DEFAULT_MEMORY_ALARM_THRESHOLD = 90.0  # percentage
 CHECKING_INTERVAL = 300  # in seconds
 TOLERATED_AMOUNT_OF_ERRORS = 10
 
